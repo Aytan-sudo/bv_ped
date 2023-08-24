@@ -1,0 +1,150 @@
+def winter_year(date):
+    if date.month > 8:
+        x = date.year
+    else:
+        x = date.year-1
+    return("Hiver "+str(x)+"-"+str((x+1))) 
+
+
+nom_cols = {
+    'DSI_DEMANDE' : "echantillon",
+    'SEJOUR' : "iep",
+    'IPP' : "ipp",
+    'DSI_PATIENT_ID_DDN_CODE_POSTAL' : "dsi_idpat",
+    'Unnamed:_4' : "ddn",
+    'Unnamed:_5' : "code_postal_patient",
+    'INSTITUTION' : "institution",
+    'UF' : "uf",
+    'CODE_POSTAL' : "code_postal_vide",
+    'TEL1' : "tel1",
+    'TEL2' : "tel2",
+    'M_V_IC_INT': "tdr",
+    'M_GV_GRAB_INT': 'pcr_grippe_vrs_old',
+    'M_GV_BIOFIRE_229E': 'M_GV_BIOFIRE_229E',
+    'M_GV_BIOFIRE_ADV': 'M_GV_BIOFIRE_ADV',
+    'M_GV_BIOFIRE_BORPP': 'M_GV_BIOFIRE_BORPP',
+    'M_GV_BIOFIRE_BP': 'M_GV_BIOFIRE_BP',
+    'M_GV_BIOFIRE_CHLAM': 'M_GV_BIOFIRE_CHLAM',
+    'M_GV_BIOFIRE_GA': 'M_GV_BIOFIRE_GA',
+    'M_GV_BIOFIRE_GAH': 'M_GV_BIOFIRE_GAH',
+    'M_GV_BIOFIRE_GAH1': 'M_GV_BIOFIRE_GAH1',
+    'M_GV_BIOFIRE_GAH3_2009': 'M_GV_BIOFIRE_GAH3_2009',
+    'M_GV_BIOFIRE_GB': 'M_GV_BIOFIRE_GB',
+    'M_GV_BIOFIRE_HEV': 'M_GV_BIOFIRE_HEV',
+    'M_GV_BIOFIRE_HKU1': 'M_GV_BIOFIRE_HKU1',
+    'M_GV_BIOFIRE_HMPV': 'M_GV_BIOFIRE_HMPV',
+    'M_GV_BIOFIRE_MERS': 'M_GV_BIOFIRE_MERS',
+    'M_GV_BIOFIRE_MYCO': 'M_GV_BIOFIRE_MYCO',
+    'M_GV_BIOFIRE_N263': 'M_GV_BIOFIRE_N263',
+    'M_GV_BIOFIRE_OC43': 'M_GV_BIOFIRE_OC43',
+    'M_GV_BIOFIRE_PIV1': 'M_GV_BIOFIRE_PIV1',
+    'M_GV_BIOFIRE_PIV2': 'M_GV_BIOFIRE_PIV2',
+    'M_GV_BIOFIRE_PIV3': 'M_GV_BIOFIRE_PIV3',
+    'M_GV_BIOFIRE_PIV4': 'M_GV_BIOFIRE_PIV4',
+    'M_GV_BIOFIRE_SARS_CoV2': 'M_GV_BIOFIRE_SARS_CoV2',
+    'M_GV_BIOFIRE_VRS': 'M_GV_BIOFIRE_VRS',
+    'M_GV_BIOFPNEU_ADV': 'M_GV_BIOFPNEU_ADV',
+    'M_GV_BIOFPNEU_CHLAM': 'M_GV_BIOFPNEU_CHLAM',
+    'M_GV_BIOFPNEU_GA': 'M_GV_BIOFPNEU_GA',
+    'M_GV_BIOFPNEU_GB': 'M_GV_BIOFPNEU_GB',
+    'M_GV_BIOFPNEU_HCOV': 'M_GV_BIOFPNEU_HCOV',
+    'M_GV_BIOFPNEU_HEV': 'M_GV_BIOFPNEU_HEV',
+    'M_GV_BIOFPNEU_HMPV': 'M_GV_BIOFPNEU_HMPV',
+    'M_GV_BIOFPNEU_LP': 'M_GV_BIOFPNEU_LP',
+    'M_GV_BIOFPNEU_MERS': 'M_GV_BIOFPNEU_MERS',
+    'M_GV_BIOFPNEU_MYCO': 'M_GV_BIOFPNEU_MYCO',
+    'M_GV_BIOFPNEU_PIV': 'M_GV_BIOFPNEU_PIV',
+    'M_GV_BIOFPNEU_VRS': 'M_GV_BIOFPNEU_VRS',
+    'M_GV_MULTIRESP_229E': 'M_GV_MULTIRESP_229E',
+    'M_GV_MULTIRESP_ADV': 'M_GV_MULTIRESP_ADV',
+    'M_GV_MULTIRESP_BOCA': 'M_GV_MULTIRESP_BOCA',
+    'M_GV_MULTIRESP_CHLAM': 'M_GV_MULTIRESP_CHLAM',
+    'M_GV_MULTIRESP_GA': 'M_GV_MULTIRESP_GA',
+    'M_GV_MULTIRESP_GAH1': 'M_GV_MULTIRESP_GAH1',
+    'M_GV_MULTIRESP_GAH3': 'M_GV_MULTIRESP_GAH3',
+    'M_GV_MULTIRESP_GB': 'M_GV_MULTIRESP_GB',
+    'M_GV_MULTIRESP_HEV': 'M_GV_MULTIRESP_HEV',
+    'M_GV_MULTIRESP_HKU1': 'M_GV_MULTIRESP_HKU1',
+    'M_GV_MULTIRESP_HMPV': 'M_GV_MULTIRESP_HMPV',
+    'M_GV_MULTIRESP_LEGIO': 'M_GV_MULTIRESP_LEGIO',
+    'M_GV_MULTIRESP_MYCO': 'M_GV_MULTIRESP_MYCO',
+    'M_GV_MULTIRESP_NL63': 'M_GV_MULTIRESP_NL63',
+    'M_GV_MULTIRESP_OC43': 'M_GV_MULTIRESP_OC43',
+    'M_GV_MULTIRESP_PIV1': 'M_GV_MULTIRESP_PIV1',
+    'M_GV_MULTIRESP_PIV2': 'M_GV_MULTIRESP_PIV2',
+    'M_GV_MULTIRESP_PIV3': 'M_GV_MULTIRESP_PIV3',
+    'M_GV_MULTIRESP_PIV4': 'M_GV_MULTIRESP_PIV4',
+    'M_GV_MULTIRESP_VRSA': 'M_GV_MULTIRESP_VRSA',
+    'M_GV_MULTIRESP_VRSB': 'M_GV_MULTIRESP_VRSB',
+    'M_GV_AL_GRIPABVRS_INT': 'M_GV_AL_GRIPABVRS_INT',
+    'M_GV_BD_COMBO_GRAB_INT': 'M_GV_BD_COMBO_GRAB_INT',
+    'M_GV_2019-nCoV_INT': 'M_GV_2019_nCoV_INT',
+    'M_GV_AL_2019-nCoV_INT': 'M_GV_AL_2019_nCoV_INT',
+    'M_GV_AL_GRIPABVRS_INT.1': 'M_GV_AL_GRIPABVRS_INT_2',
+    'M_GV_BD_2019-nCoV_INT': 'M_GV_BD_2019_nCoV_INT',
+    'M_GV_BD_COMBO_SARS-CoV-2_INT': 'M_GV_BD_COMBO_SARS_CoV_2_INT',
+    'M_GV_CER_2019-nCoV_INT': 'M_GV_CER_2019_nCoV_INT',
+    'M_V_BIODELOC_GRIPPE_A' : 'M_V_BIODELOC_GRIPPE_A',
+    'M_V_BIODELOC_GRIPPE_B' : 'M_V_BIODELOC_GRIPPE_B',
+    'M_V_BIODELOC_SARS-CoV-2' : 'M_V_BIODELOC_SARS-CoV-2',
+    'M_V_BIODELOC_VRS' : 'M_V_BIODELOC_VRS',
+    'M_V_SARS-COV-2_DELOC_IC_INT': 'M_V_SARS_COV_2_DELOC_IC_INT',
+    'M_V_SARS-CoV2_INT': 'M_V_SARS_CoV2_INT',
+    'M_V_SEL_INT': 'vir_dig_INT',
+    'Unnamed:_0': 'Unnamed:_0',
+    'M_GV_GRA_H1N1_INT': 'M_GV_GRA_H1N1_INT',
+    'M_V_IF_INT': 'if_int',
+    'M_GV_BD_VRS_INT': 'M_GV_BD_VRS_INT',
+    'M_GV_MULTIRESP_SARS-COV-2':'M_GV_MULTIRESP_SARS-COV-2',
+    'M_V_BIODELOC_INTERPRETATION':'M_V_BIODELOC_INTERPRETATION'
+}
+
+
+#for df[age_j] pandas.cut()
+bins_age_col = [0,30,90,180,365,730,1825,4015,6575,14600,23725,999999]
+labels_age_col = ["<1 mois", "1 à 3 mois","3 à 6 mois","6 mois à 1 an",
+                    "1 à 2 ans","2 à 5 ans","5 à 11 ans","11 à 18 ans",
+                    "18 à 40 ans","40 à 65 ans","Sup 65 ans"]
+
+modifs = {
+    "tdr" : {"Absence de détection des cibles testées par la PCR multiplex (dont la grippe B) : Probable faux positif en VIRUS INFLUENZA  type B par le test antigénique." : "Absence d'infection"},
+    "pcr_grippe_vrs_old" : {"Absence d'infection par un virus grippal et par un virus respiratoire syncytial." : "Absence d'infection"},
+    "M_GV_AL_GRIPABVRS_INT" : {"Absence de grippe A/B et VRS|Absence de SARS CoV2, grippe A/B et VRS|Absence de grippe A/B." : "Absence d'infection"},
+    "M_GV_BD_COMBO_GRAB_INT" : {"Absence d'infection par un virus grippal" : "Absence d'infection"},
+    "if_int" : {"parainfluenza|Parainfluenza|PARAINFLUENZA|parainfluenzae|Parainfluenzae|PARAINFLUENZAE" : "Parainflu."},
+    "M_GV_BD_VRS_INT" : {"Absence d'infection par le virus respiratoire syncytial (VRS)" : "Absence d'infection"}
+}
+
+hiver_hist = ["Hiver 2018-2019","Hiver 2019-2020","Hiver 2020-2021","Hiver 2021-2022"]
+hiver_en_cours = ["Hiver 2022-2023"]
+
+color_graphs = {
+    "hist" : ("#8dd3c7", "#ffff5c", "#bebada", "#fb8072"),
+    "vrs" : "tab:blue",
+    "entero" : "tab:cyan",
+    "flu" : "tab:red",
+    "covid" : "purple",
+    "covid_no_tdr" : "black",
+    "adeno" : "tab:pink",
+    "rota" : "tab:green",
+    "adeno_dig" : "tab:green",
+    "noro" : "tab:green",
+    "hmpv" : "tab:blue",
+    "piv" : "tab:blue",
+    "myco" : "tab:cyan",
+}
+
+names_virus = {
+    "vrs" : "VRS",
+    "entero" : "Entérovirus",
+    "flu" : "Grippes",
+    "covid" : "Covid-19",
+    "adeno" : "Adénovirus",
+    "covid_no_tdr" : "Covid-19 (hors TDR)",
+    "rota" : "Rotavirus",
+    "adeno_dig" : "Adénovirus (digestif)",
+    "noro" : "Norovirus",
+    "hmpv" : "Métapneumovirus",
+    "piv" : "Parainfluenzae",
+    "myco" : "Mycoplasmes",
+}
